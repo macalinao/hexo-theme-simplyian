@@ -260,7 +260,6 @@ function afterPjax() {
   if (isPostPage && !smallScreen) {
     generateTOC();
     setTimeout("scrollSpy()", 300);
-    duoshuoInlineComment();
 
     $('.scroller').scroll(function() {
       if ((window.screen.width - 700) / 2 > $('#trigger').parent().width() + $('#nexus-back').parent().width()) {
@@ -284,14 +283,7 @@ function afterPjax() {
       }
     });
   }
-  //   lazy load DUOSHUO
-  var ds_loaded = false;
-  if (isPostPage) {
-    setTimeout(function() {
-      toggleDuoshuoComments('#comment-box');
-      ds_loaded = true;
-    }, 1000);
-  }
+
   //    Smooth Scroll for the TOC in header
   $('#toc a').click(function(e) {
     var headID = $(this).attr('href');
