@@ -284,6 +284,19 @@ function afterPjax() {
     });
   }
 
+  // Reset disqus
+  if (isPostPage) {
+    setTimeout(function() {
+      DISQUS.reset({
+        reload: true,
+        config: function() {
+          this.page.identifier = document.URL;
+          this.page.url = document.URL;
+        }
+      });
+    }, 1000);
+  }
+
   //    Smooth Scroll for the TOC in header
   $('#toc a').click(function(e) {
     var headID = $(this).attr('href');
