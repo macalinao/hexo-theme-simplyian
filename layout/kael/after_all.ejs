@@ -10,11 +10,9 @@
 <script type="text/javascript" src="<%- config.root%>js/lib.js"></script>
 <script type="text/javascript" src="<%- config.root%>js/main.js"></script>
 
-
-<% if (theme.google_analytics) { %>
 <script type="text/javascript">
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '<%- theme.google_analytics %>']);
+    _gaq.push(['_setAccount', 'UA-56968562-2']);
     _gaq.push(['_trackPageview']);
 
     (function() {
@@ -23,7 +21,6 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script>
-<% } %>
 <% if (config.disqus_shortname){ %>
 <script type="text/javascript">
     var disqus_shortname = '<%= config.disqus_shortname %>';
