@@ -15,26 +15,6 @@ var generateTOC = function() {
     });
 
 };
-$('span.ds-thread-count').click(function(event) {
-  var self = $(this);
-  if ($('span.ds-thread-count').not(self).hasClass('active')) {
-    var l = $('span.ds-thread-count').filter('.active');
-    hideInlineComment(l, l.next());
-  }
-  if (!self.hasClass('active')) {
-    self.addClass('active');
-    var inlineComment = $(this).next();
-    inlineComment.fadeIn();
-    $(".post-content").addClass('right');
-    var identifier = postTitle + $(this).attr('id');
-    if (!inlineComment.hasClass('loaded')) {
-      loadInlineComment(inlineComment, identifier);
-    }
-  } else {
-    hideInlineComment(self, self.next());
-  }
-  event.stopPropagation();
-});
 
 
 // detect a click outside the trigger.
@@ -48,38 +28,7 @@ $('html').click(function() {
   $(".post-content").filter('.right').removeClass('right');
 });
 
-$('.inline-comment').click(function() {
-  event.stopPropagation();
-
-})
-
-
-var hideInlineComment = function(trigger, comment) {
-
-  trigger.removeClass('active');
-  $(".post-content").removeClass('right');
-  comment.fadeOut();
-
-};
-
-
-var loadInlineComment = function(container, id) {
-  $(container).addClass('loaded');
-  var el = document.createElement('div');
-  el.setAttribute('data-thread-key', id);
-  el.setAttribute('data-url', postHref);
-  el.setAttribute('data-title', postTitle);
-  el.setAttribute('data-author-key', duoshuoName); // change to your duoshuo name
-  DUOSHUO.EmbedThread(el);
-  $(container).append(el);
-}
-
-//    Multiple DUOSHUO threads for PJAX END
-
-
-
 //   Scroll spy headline
-
 var scrollSpy = function() {
   for (var i = 1; i < 7; i++) {
     var headI = 'h' + i;
@@ -174,13 +123,7 @@ function afterPjax() {
 
   $('.share-button').popover({
     placement: 'bottom',
-    content: '<a target="_blank" href="http://service.weibo.com/share/share.php?url=' +
-      postHref + "&title=" + postTitle +
-      '"><i  class=" fa share-icon fa-weibo fa-2x"></i></a>' +
-      '<a target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=' +
-      postHref + "&title=" + postTitle +
-      '"><i class="fa share-icon fa-renren fa-2x"></i></a>' +
-      '<a target="_blank" href="http://twitter.com/share?url=' +
+    content: '<a target="_blank" href="http://twitter.com/share?url=' +
       postHref +
       '"><i class="fa share-icon fa-twitter fa-2x"></i></a>' +
       '<a target="_blank" href="https://plus.google.com/share?url=' +
