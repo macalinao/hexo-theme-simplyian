@@ -1,57 +1,28 @@
-
-<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js">
+</script>
 <script>
-    if (!window.jQuery) {
-        var script = document.createElement('script');
-        script.src = "<%- config.root%>js/jquery.min.js";
-        document.body.appendChild(script);
-    }
+  if (!window.jQuery) {
+    var script = document.createElement('script');
+    script.src = "<%- config.root%>js/jquery.min.js";
+    document.body.appendChild(script);
+  }
 </script>
 <script type="text/javascript" src="<%- config.root%>js/lib.js"></script>
 <script type="text/javascript" src="<%- config.root%>js/main.js"></script>
 
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-56968562-2']);
-    _gaq.push(['_trackPageview']);
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+  ga('create', 'UA-56968562-2', 'auto');
+  ga('send', 'pageview');
 </script>
-<% if (config.disqus_shortname){ %>
-<script type="text/javascript">
-    var disqus_shortname = '<%= config.disqus_shortname %>';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-<% } %>
-<% if (theme.fancybox){ %>
-<link rel="stylesheet" href="<%- config.root %>modules/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="<%- config.root %>modules/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-    (function($){
-
-        var wrapAll = function(q) {
-            $(q).each( function() {
-                var $img = $(this),
-                        href = $img.attr('src');
-                $img.wrap('<a rel="fancybox" href="' + href + '" title="' + $img.attr('alt') + '" class="link"></a>');
-            });
-        };
-
-        wrapAll('.post-content img');
-        wrapAll('.post-excerpt img');
-        $('[rel="fancybox"]').fancybox();
-    })(jQuery);
-</script>
-<% } %>
-
