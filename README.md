@@ -26,7 +26,9 @@ The theme to [simplyian.com][simplyian], based off of yuche's [hexo-theme-kael].
 
 ### Install
 
+```
 $ git clone git@github.com:simplyianm/hexo-theme-simplyian.git themes/simplyian
+```
 
 ### Enable
 
