@@ -1,7 +1,7 @@
 <% permalink = config.url + config.root + post.path %>
 
 <main class="content" role="main">
-    <article class="post" >
+  <article class="post" >
     <span class="post-meta">
       <div class="tag-tile">
           <% if (post.tags && post.tags.length){ %>
@@ -22,34 +22,51 @@
         <div class="share-facebook">
           <iframe src="http://www.facebook.com/plugins/like.php?href=<%= permalink %>&layout=button_count" style="overflow:hidden;width:100%;height:20px;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </div>
-<script type="text/javascript">
-window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
-</script>
+        <script type="text/javascript">
+        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+        </script>
       </div>
     </span>
 
-        <section class="post-content">
-            <%- post.content %>
-        </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            <% if (page.prev) { %>
-            <a data-pjax class="newer-posts" href="<%- config.root %><%- page.prev.path %>">← Prev Post</a>
-            <% } else { %>
-            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
-            <% } %>
-            <a class="share-button" data-original-title title>Share this Post</a>
-            <% if (page.next) { %>
-            <a data-pjax class="older-posts" href="<%- config.root %><%- page.next.path %>">Next Post →</a>
-            <% } %>
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="disqus_thread"></div>
-            <div id="comment-box"></div>
-        </section>
+    <section class="post-content">
+      <%- post.content %>
+    </section>
 
+    <hr />
 
-    </article>
+    <section>
+      <p>Thanks for reading my post! If you enjoyed it or it helped you, please consider liking/tweeting this page, commenting, or following me on <a href="https://github.com/simplyianm" target="_blank">GitHub</a> or <a href="https://twitter.com/simplyianm">Twitter</a>!</p>
+      <div class="share-links">
+        <div class="share-twitter">
+          <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+        </div>
+        <div class="share-facebook">
+          <iframe src="http://www.facebook.com/plugins/like.php?href=<%= permalink %>&layout=button_count" style="overflow:hidden;width:100%;height:20px;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div>
+        <script type="text/javascript">
+        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+        </script>
+      </div>
+    </section>
+
+    <hr />
+
+    <nav class="pagination" style="width:auto" role="pagination">
+      <% if (page.prev) { %>
+      <a data-pjax class="newer-posts" href="<%- config.root %><%- page.prev.path %>">← Prev Post</a>
+      <% } else { %>
+      <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+      <% } %>
+      <a class="share-button" data-original-title title>Share this Post</a>
+      <% if (page.next) { %>
+      <a data-pjax class="older-posts" href="<%- config.root %><%- page.next.path %>">Next Post →</a>
+      <% } %>
+    </nav>
+
+    <section id="comment">
+      <div id="disqus_thread"></div>
+      <div id="comment-box"></div>
+    </section>
+
+  </article>
 </main>
