@@ -16,12 +16,18 @@
                         Post on<span class="fa fa-clock-o"></span>
                         <time datetime="<%= date_xml(post.date) %>"
                               itemprop="datePublished"><%= date(post.date, null) %></time>
+        </div>
+        <div class="share-links">
 
-<a class="twitter-share-button" href="https://twitter.com/share" data-count="vertical">Tweet</a>
+                            <div class="share-twitter">
+<a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+</div>
+<div class="share-facebook">
+<iframe src="http://www.facebook.com/plugins/like.php?href=<%= 'http://simplyian.com' + config.root + post.path %>&layout=button_count" style="overflow:hidden;width:100%;height:20px;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+</div>
 <script type="text/javascript">
 window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
 </script>
-<iframe src="http://www.facebook.com/plugins/like.php?href=<%= 'http://simplyian.com' + config.root + post.path %>&amp;layout=box_count&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp" style="overflow:hidden;width:100%;height:80px;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
 
                     </div>
