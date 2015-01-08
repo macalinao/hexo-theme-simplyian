@@ -16,6 +16,14 @@
                         Post on<span class="fa fa-clock-o"></span>
                         <time datetime="<%= date_xml(post.date) %>"
                               itemprop="datePublished"><%= date(post.date, null) %></time>
+
+<a class="twitter-share-button" href="https://twitter.com/share" data-count="vertical">Tweet</a>
+<script type="text/javascript">
+window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+</script>
+<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+
                     </div>
     </span>
 
