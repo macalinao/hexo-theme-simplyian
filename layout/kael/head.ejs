@@ -26,6 +26,12 @@
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/component.css" />
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/screen.css" />
   <meta name="generator" content="<%- config.title %>">
+
+  <% if (page.content){ %>
+  <meta name="description" content="<%- page.content.substring(0, page.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '').substring(0, 152).trim() %>..." />
+  <meta name="og:description" content="<%- page.content.substring(0, page.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '').substring(0, 300).trim() %>..." />
+  <% } %>
+
   <% if (config.rss) { %>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%- config.rss %>">
   <% } %>
@@ -35,6 +41,7 @@
   <% if (config.feed && config.feed.type == 'rss') { %>
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<%- config.feed.path %>">
   <% } %>
+
 
 </head>
 <body>
