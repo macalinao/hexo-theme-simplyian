@@ -5,37 +5,21 @@
     <article class="post">
 
         <header class="post-header">
-            <div class="tag-tile">
-                <% if (post.tags && post.tags.length){ %>
-                <% post.tags.forEach(function(tag) { %>
-                <a data-pjax href='<%= config.root + tag.path %>'><%= tag.name %></a>
-                <% }); %>
-                <% } %>
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="<%- config.root %><%- post.path %>"><%- post.title %></a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="<%= date_xml(post.date) %>"
+          <div class="post-time">
+            <span class="fa fa-clock-o"></span>
+            <time datetime="<%= date_xml(post.date) %>"
                       itemprop="datePublished"><%= date(post.date, null) %></time>
-            </div>
+          </div>
+          <h1 class="post-title"><a data-pjax href="<%- config.root %><%- post.path %>"><%- post.title %></a></h1>
         </header>
         <section class="post-excerpt">
-            <p>
-                <% if (post.excerpt){ %>
-                <%- post.excerpt %>
-                <% } else { %>
-                <%- post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220) %>
-                <% } %>
-            </p>
-            <% if (theme.excerpt_link) { %>
-            <p>
-                <a data-pjax href="<%- config.root %><%- post.path %>"
-                   class="excerpt-link"><%= theme.excerpt_link %>...</a>
-            </p>
+          <p>
+            <% if (post.excerpt){ %>
+              <%- post.excerpt %>
+            <% } else { %>
+              <%- post.content.substring(0, post.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '') %>
             <% } %>
+          </p>
         </section>
     </article>
     <% }); %>
