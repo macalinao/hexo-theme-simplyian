@@ -100,21 +100,6 @@ function afterPjax() {
     html: true
   });
 
-  //    Fixed Multi-level-push-menu for PJAX
-  $(".mp-pjax a").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var pjaxHref = this.href;
-    $('.scroller').trigger('click');
-    if (hasPushstate) {
-      $(".pjax-hidden a").each(function() {
-        if (this.href === pjaxHref) {
-          $(this).trigger('click');
-        }
-      });
-    }
-  });
-
   $("a.back-home").click(function(e) {
     e.preventDefault();
     $('.scroller').trigger('click');
@@ -238,30 +223,3 @@ function afterPjax() {
   }
 
 };
-//      PJAX init
-$(document).pjax('a[data-pjax]', '.container', {
-  fragment: '.container',
-  timeout: 10000
-});
-$(document).on({
-  'pjax:click': function() {
-    $('.scroller').removeClass('fadeIn').addClass('fadeOut');
-    NProgress.start();
-  },
-  'pjax:start': function() {
-    $('.scroller').css('opacity', '0');
-  },
-  'pjax:end': function() {
-    NProgress.done();
-    $('.scroller').css('opacity', '1').removeClass('fadeOut').addClass('fadeIn');
-    afterPjax();
-    $('#navbar-toc').hide();
-    $('.nexus').css('width', 'auto');
-    $('#navbar-title a').hide();
-  },
-  'pjax:popstate': function() {
-    setTimeout("$('#toc').find('li').remove();", 100);
-    setTimeout("generateTOC()", 200);
-    setTimeout("$('#comment-box').children().remove();", 100);
-  },
-});
