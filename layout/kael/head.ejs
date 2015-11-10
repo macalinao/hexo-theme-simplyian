@@ -44,15 +44,17 @@
 
 
 </head>
+
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=642450882544195&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=642450882544195&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="container">
     <div class="mp-pusher" id="mp-pusher">
         <i id="scroll-up" class="fa fa-angle-up"></i>
@@ -82,51 +84,6 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Categories</a>
-
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-copy"></i>
-                                Categories</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-category" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                <% site.categories.sort('name').each(function(item){ %>
-                                <li class="search-category-li mp-pjax">
-                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;&nbsp;<%= item.name %></a>
-                                    <small><%= item.posts.length %></small>
-                                </li>
-                                <% }); %>
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Tags</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-tags"></i>
-                                Tags</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-tag" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                <% site.tags.sort('name').each(function(item){ %>
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;&nbsp;<%= item.name %></a>
-                                    <small><%= item.posts.length %></small>
-                                </li>
-                                <% }); %>
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
                     <li><a class="fa fa-user" href="http://ian.pw">&nbsp;&nbsp;&nbsp;My Homepage</a></li>
                     <li><a class="fa fa-github" href="https://github.com/simplyianm">&nbsp;&nbsp;&nbsp;Github</a></li>
 
@@ -134,6 +91,7 @@
 
             </div>
         </nav>
+
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 <% site.posts.sort('date', -1).each(function(post){ %>
